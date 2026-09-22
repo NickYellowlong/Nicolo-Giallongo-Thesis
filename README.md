@@ -1,8 +1,8 @@
-# [Project Title]
+# NL QuesTale
 
-> [Short one-line description of the project, e.g. "A RAG-based question answering system using local LLMs."]
+> An application for Interactive and Immersive Storytelling with LLMs
 
-This project was developed as part of a thesis work at [University Name], [Department Name], Academic Year [YYYY/YYYY].
+This project was developed as part of a thesis work at Politecnico di Milano, Computer Science Engigneering, Academic Year 2025/2026.
 
 ---
 
@@ -28,13 +28,37 @@ This project was developed as part of a thesis work at [University Name], [Depar
 
 ## Overview
 
-[Provide a concise description of the project: what problem it solves, the approach used, and the main technologies involved. This section should be self-contained and understandable without prior knowledge of the codebase.]
+This repository cotains the code and the data to run the application in local. QuesTale is an interactove application that laverage the generative power of LLMs, combined with a scaffolding architecture, to offer interactive and immersive narrative experiences, specifically set in a fantasy setting.
 
 ---
 
 ## Architecture
 
-[Briefly describe the system architecture. Mention the main components and how they interact: e.g. front-end, back-end API, retrieval API, LLM inference server. A diagram or reference to one is recommended.]
+The high-level architecture of the whole solution is composed of four main components,
+which communicate through API calls. In the following list we will describe them briefly:
+
+1. Models. This is the layer that hosts and manages the models used by the solution. We used LM
+studio for this component of the solution. LM studio is a desktop application that allows to run locally
+AI models, especially LLMs. Other than offering many useful tools to download, manage and supervise
+models, the key feature that makes LM studio suitable for our solution is that it allows API calls to the
+models. This makes it possible to easily load and use models in a completely automatic way.
+
+2. Scaffolding architecture. This is the architecture at the core of this work. Its role is to invoke various
+models from the Models component (among which the story generation model) and produce data useful
+for the functioning of the interactive application. It mediates between the application and the LLMs.
+The functionalities that this component offers are Retrieval Augmented Generation (RAG), information
+extraction from the user input, information extraction from the output text, and finally generation of the
+story scenes.
+
+3. Application back-end. This component constitutes the real application and its logic. It invokes
+the functions of the scaffolding architecture through API calls, and uses the data received to perform
+operations such as updating the application state, invoking other operations from the architecture or
+outputting the data to the front-end.
+
+4. Application front-end. This component constitutes the UI. The user will interact with this compo
+nent and the various interactions will cause invocations to the application back-end.
+
+![alt text](Architecture.drawio.png)
 
 ---
 
@@ -201,14 +225,12 @@ All four components must be started in the order listed below.
 
 ## Authors
 
-- **[Full Name]** — [Student ID / Role] — [email@university.edu]
+- **Nicolò Giallongo**  — nicolo.giallongo@mail.polimi.it
 
 ## Supervisor
 
-- **[Prof./Dr. Full Name]** — [Department] — [University Name]
+- **Prof. Franca Grazotto**
+- **Giulia Valcamonica**
+- **Francesco Piferi**
+- **Francesco Vona**
 
----
-
-## License
-
-[Specify the license, e.g.: This project is licensed for academic use only. All rights reserved. / MIT License / etc.]
